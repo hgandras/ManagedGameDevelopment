@@ -60,3 +60,5 @@ MonoBehaviour:
   movementEvolves: []
   onXPChange: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
   onHPChange: {fileID: 11400000, guid: 1876a0327bbbfc8448de1addb54965ee, type: 2}
+  objectsToKeep: {fileID: 0}
+  canChangeScene: 1

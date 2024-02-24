@@ -11,9 +11,21 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(Spawner());
         StartCoroutine(PlantSpawner());
     }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+
 
     private IEnumerator Spawner()
     {

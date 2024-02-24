@@ -29,6 +29,18 @@ public class Player : MonoBehaviour
     {
         moveAction = actions.Gameplay.Move;
         moveAction.Enable();
+        //Debug.Log("Start called");
+        GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
+        /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
+        GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
+
+        SpriteRenderer aERenderer = attackEvolve.GetComponent<SpriteRenderer>();
+        /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
+        SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
+
+        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
+        aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
+        //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
     }
 
     private void OnDisable()

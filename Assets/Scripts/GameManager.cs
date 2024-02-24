@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     //Instance
     public static GameManager instance { get; private set; }
 
+    
+
     //Player stats
     [Header("General player stats")]
     public float playerHP;
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
     public List<RandomEnemyInfo> procEnemyColors = new List<RandomEnemyInfo>();
 
 
-    //TODO: Add base stats to the player, if no evolves are attached
+    //Evolves
     [Header("Evolves")]
     public AttackEvolve attachedAttackEvolve;
     public DefenseEvolve attachedDefenseEvolve;
@@ -37,28 +39,53 @@ public class GameManager : MonoBehaviour
     public GameEvent onXPChange;
     public GameEvent onHPChange;
 
-    //Private lists
+    //Private lists, and things related to handling game objects
+    [SerializeField] private GameObject objectsToKeep;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private List<GameObject> spawnedPlants = new List<GameObject>();
 
     //Properties
     public int numEnemies { get { return spawnedEnemies.Count;} }
     public int numPlants { get { return spawnedPlants.Count;} }
-    
+
+
+    //Others
+    public bool canChangeScene;
+
+    //Controls for changing between scenes
+    private Controls actions;
+    private InputAction backAction;
+
+    private void OnEnable()
+    {
+        backAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        backAction.Disable();
+    }
+
+   
+
     public void Awake()
     {
-        DontDestroyOnLoad(this);
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
+        Debug.Log("Awake called");
+        actions = new Controls();
+        backAction = actions.Gameplay.Back;
+        backAction.performed += ChangeToEditor;
 
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
-    {
-        
+    {  
         instance.lvl = 0;
         instance.lvlProgress = 0;
         instance.lvlMaxXP = 50;
@@ -119,7 +146,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-    
 
+    private void ChangeToEditor(InputAction.CallbackContext callbackContext)
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+        if (activeScene.name == "Editor" && canChangeScene)
+        {
+            objectsToKeep.SetActive(true);
+            SceneManager.LoadScene("SampleScene");
+        }
+        else if (activeScene.name == "SampleScene")
+        {
+            objectsToKeep.SetActive(false);
+            SceneManager.LoadScene("Editor");
+        }
+    }
 }

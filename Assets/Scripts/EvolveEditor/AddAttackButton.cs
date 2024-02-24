@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class AddAttackButton : MonoBehaviour
 {
     [SerializeField] AttackEvolve evolve;
-    [SerializeField] Player player;
+    [SerializeField] GameObject player;
     
     char evolveType;
     int evolveID;

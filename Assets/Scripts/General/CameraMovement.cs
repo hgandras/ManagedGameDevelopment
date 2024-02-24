@@ -8,7 +8,15 @@ public class CameraMovement : MonoBehaviour
 {
     private float smoothTime = 0.25f;
     private Vector3 v=Vector3.zero;
-    [SerializeField] private GameObject objToFollow;
+    private GameObject objToFollow;
+
+    private void Start()
+    {
+        objToFollow = GameObject.Find("Player");
+        Vector3 targetPos = objToFollow.transform.position;
+        targetPos.z = transform.position.z;
+        transform.position = transform.position;
+    }
 
     private void FixedUpdate()
     {

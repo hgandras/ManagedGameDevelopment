@@ -95,6 +95,7 @@ public class ItemController : MonoBehaviour
     {
         if (menu.tag != "Menu")
             return;
+        GameManager.instance.canChangeScene = false;
         CurrentActiveMenu = menu;
     }
 
@@ -105,10 +106,7 @@ public class ItemController : MonoBehaviour
             mainMenu.SetActive(true);
             CurrentActiveMenu.SetActive(false);
             CurrentActiveMenu = null;
-        }
-        else if(CurrentActiveMenu == null) 
-        {
-            SceneManager.LoadScene("SampleScene");
+            GameManager.instance.canChangeScene = true;
         }
     }
 

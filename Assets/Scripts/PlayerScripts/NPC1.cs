@@ -34,12 +34,6 @@ public class NPC1 : NPCBase
         }
     }
 
-    protected override void triggerAction(Collider2D collision)
-    {
-        GameManager.instance.RemoveSpawnedEnemy(gameObject);
-        Destroy(gameObject);
-    }
-
     protected override void updateState()
     {
         Vector3 offset = new Vector3(moveDir.x, moveDir.y, 0);
@@ -48,10 +42,5 @@ public class NPC1 : NPCBase
             npcState = State.ALERTED;
         else
             npcState = State.IDLE;
-    }
-
-    protected override void collisionAction(Collision2D collision)
-    {
-        return;
     }
 }

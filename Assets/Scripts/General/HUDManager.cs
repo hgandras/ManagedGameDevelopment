@@ -9,28 +9,7 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    private Controls actions;
-    private InputAction backAction;
-
-    private void OnEnable()
-    {
-        
-        backAction.Enable();
-    }
-
-    private void OnDisable()
-    {
-        backAction.Disable();
-    }
-
-    private void Awake()
-    {
-        actions = new Controls();
-
-        backAction = actions.Gameplay.Back;
-
-        backAction.performed += ChangeToEditor; 
-    }
+    
 
     public void UpdateXPBar()
     {
@@ -46,9 +25,5 @@ public class HUDManager : MonoBehaviour
         Debug.Log(GameManager.instance.playerHP);
     }
 
-    public void ChangeToEditor(InputAction.CallbackContext callbackContext)
-    {
-        Debug.Log("Change Scene");
-        SceneManager.LoadScene("Editor");
-    }
+    
 }
