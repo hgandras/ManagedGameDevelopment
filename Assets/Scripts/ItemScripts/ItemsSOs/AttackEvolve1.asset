@@ -16,4 +16,4 @@ MonoBehaviour:
   attackSpeed: 0
   melee: 1
   damage: 10
-  displaySprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  displaySprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}

@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
@@ -56,7 +57,7 @@ public class ItemController : MonoBehaviour
     private void OnDisable()
     {
         // actions.Disable();
-        click.Enable();
+        click.Disable();
         mousePos.Disable();
         back.Disable();
     }
@@ -79,13 +80,13 @@ public class ItemController : MonoBehaviour
 
     private void Click(InputAction.CallbackContext context)
     {
-        Debug.Log("Clicked");
+        //Debug.Log("Clicked");
         Ray ray = sceneCamera.ScreenPointToRay(mouseScreenPos);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin,ray.direction);
         if (hit.collider)
         {
             hitObject = hit.collider.gameObject;
-            Debug.Log("Collider hit: "+ hitObject);
+            //Debug.Log("Collider hit: "+ hitObject);
             StartCoroutine(Dragging());
         }
     }
@@ -104,7 +105,11 @@ public class ItemController : MonoBehaviour
             mainMenu.SetActive(true);
             CurrentActiveMenu.SetActive(false);
             CurrentActiveMenu = null;
-        }  
+        }
+        else if(CurrentActiveMenu == null) 
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 
     

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class AttackEvolve : MonoBehaviour, IEvolve
 {
-    [SerializeField] AttackEvolveSO attackData;
-    [SerializeField] int _ID;
+    public AttackEvolveSO evolveData;
+    [SerializeField] string _ID;
     private float attackRange;
     private float attackSpeed;
     private float damage;
     private bool melee;
 
     public bool isUnlocked { get; set; }
-    public int ID { get { return _ID; } set { _ID = value; } }
+    public string ID { get { return _ID; } private  set { _ID = value; } }
+
+    public string Name => throw new System.NotImplementedException();
 
     private void OnValidate()
     {
@@ -23,10 +25,12 @@ public class AttackEvolve : MonoBehaviour, IEvolve
     {
         isUnlocked = false;
 
-        attackRange = attackData.attackRange;
-        attackSpeed = attackData.attackSpeed;
-        damage = attackData.damage;
-        melee = attackData.melee;
+        attackRange = evolveData.attackRange;
+        attackSpeed = evolveData.attackSpeed;
+        damage = evolveData.damage;
+        melee = evolveData.melee;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        renderer.sprite = evolveData.displaySprite;
     }
 
     public void Action()

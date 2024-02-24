@@ -1256,22 +1256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5326343311620182593, guid: ceef11a961a87ce438240ccbc39e178e, type: 3}
-      propertyPath: m_TagString
-      value: GameController
-      objectReference: {fileID: 0}
-    - target: {fileID: 6897684214992145043, guid: ceef11a961a87ce438240ccbc39e178e, type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
-    - target: {fileID: 6897684214992145043, guid: ceef11a961a87ce438240ccbc39e178e, type: 3}
-      propertyPath: onHPChange
-      value: 
-      objectReference: {fileID: 11400000, guid: 1876a0327bbbfc8448de1addb54965ee, type: 2}
-    - target: {fileID: 6897684214992145043, guid: ceef11a961a87ce438240ccbc39e178e, type: 3}
-      propertyPath: onXPChange
-      value: 
-      objectReference: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

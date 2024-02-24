@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class DefenseEvolve : MonoBehaviour, IEvolve
 {
-    [SerializeField] DefenseEvolveSO evolveData;
+    public DefenseEvolveSO evolveData;
+    [SerializeField] string _ID;
+    public string ID { get { return _ID; } private set { _ID = value; } }
     public bool isUnlocked {get;set;}
-    public int ID { get; }
+
+    public string Name => throw new System.NotImplementedException();
+
     private void Awake()
     {
         isUnlocked = false;

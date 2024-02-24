@@ -29,6 +29,7 @@ public class ObjectSpawner : MonoBehaviour
 
             SpriteRenderer[] sr = spawnedObject.GetComponentsInChildren<SpriteRenderer>();
             int randomEnemy = Random.Range(0, GameManager.instance.numRandomEnemies);
+            Debug.Log(GameManager.instance.procEnemyColors.Count);
             sr[0].color = GameManager.instance.procEnemyColors[randomEnemy].headColor;
             sr[1].color = GameManager.instance.procEnemyColors[randomEnemy].bodyColor;
 

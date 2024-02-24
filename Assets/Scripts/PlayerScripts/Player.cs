@@ -6,8 +6,17 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Holds functionalities of the player. Derives from the ChracterBase class, which holds common methods for the player, and the NPCs.
 /// </summary>
-public class Player : CharacterBase
+public class Player : MonoBehaviour
 {
+    protected float speed;
+    protected Vector2 moveDir = Vector2.up;
+    protected float maxSpeed = 10;
+
+    public AttackEvolve attackEvolve { get; set; }
+    public DefenseEvolve defenseEvolve { get; set; }
+    public MovementEvolve movementEvolve { get; set; }
+
+    private Rigidbody2D rb;
     private Controls actions;
     private InputAction moveAction;
 
@@ -27,25 +36,48 @@ public class Player : CharacterBase
         moveAction.Disable();
     }
 
-    protected override void triggerAction(Collider2D collision)
+
+
+    private void Start()
     {
-        //GameManager.AddXP(5);
-        
+        rb = GetComponent<Rigidbody2D>();
+        Debug.Log(rb);
+        //Debug.Log("Start called");
+         GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
+         /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
+         GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
+
+         SpriteRenderer aERenderer = attackEvolve.GetComponent<SpriteRenderer>();
+        /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
+        SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
+
+        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
+         aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
+         //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
     }
 
-    protected override void updateMoveDir()
+    void FixedUpdate()
+    {        
+        //Update move direction, and normalize
+        updateMoveDir();
+
+        moveDir.Normalize();
+        //Debug.Log(rb);
+        rb.AddForce(moveDir * 2);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+
+        float angle = (float)((Mathf.Atan2(moveDir.y, moveDir.x) / Mathf.PI) * 180f) - 90f;
+        rb.MoveRotation(angle);
+    }
+
+
+    private void updateMoveDir()
     {
         moveDir = moveAction.ReadValue<Vector2>();
     }
 
-    protected override void updateState()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        return;
-    }
-
-    protected override void collisionAction(Collision2D collision)
-    {
-
         if (collision.transform.tag == "Enemy")
         {
             GameManager.DamagePlayer(5);
@@ -55,7 +87,7 @@ public class Player : CharacterBase
 
     public void AddItemToPlayer(char evolveType, int evolveID)
     {
-        switch (evolveType)
+        switch(evolveType)
         {
             case 'A':
                 attackEvolve = GameManager.instance.attackEvolves[evolveID];

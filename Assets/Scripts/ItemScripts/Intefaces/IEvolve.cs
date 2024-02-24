@@ -7,8 +7,15 @@ using UnityEngine;
 /// </summary>
 public interface IEvolve
 {
-    bool isUnlocked { get; set; }
-    int ID { get;}
+    public bool isUnlocked { get; set; }
+    /// <summary>
+    /// Id is a letter (A,D,M), and a number.
+    /// </summary>
+    public string ID { get;}
+    /// <summary>
+    /// Name of the item
+    /// </summary>
+    public string Name { get;}
     /// <summary>
     /// Attaches the evolve to the game_object
     /// </summary>

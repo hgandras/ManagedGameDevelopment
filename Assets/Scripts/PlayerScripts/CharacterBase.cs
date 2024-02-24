@@ -17,7 +17,7 @@ public abstract class CharacterBase : MonoBehaviour
     public DefenseEvolve defenseEvolve { get; set; }
     public MovementEvolve movementEvolve { get; set; }
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
 
     

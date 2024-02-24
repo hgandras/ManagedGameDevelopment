@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6897684214992145043}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127ed67c566d79040857f70ad0c566cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: 100
+  playerMaxHP: 100
+  lvl: 0
+  lvlProgress: 50
+  lvlMaxXP: 50
+  numRandomEnemies: 0
+  attachedAttackEvolve: {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
+  attachedDefenseEvolve: {fileID: 0}
+  attachedMovementEvolve: {fileID: 0}
+  attackEvolves:
+  - {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
+  - {fileID: 2631627738387899640, guid: 9da974a19819e584cb29707d370cc1cd, type: 3}
+  defenseEvolves: []
+  movementEvolves: []
+  onXPChange: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
+  onHPChange: {fileID: 11400000, guid: 1876a0327bbbfc8448de1addb54965ee, type: 2}

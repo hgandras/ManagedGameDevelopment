@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2799472023614458502}
   - component: {fileID: 952348700168846886}
   m_Layer: 5
-  m_Name: EvolveAddButton
+  m_Name: AddDefenseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,8 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8780d33db339fc4badd539139e91532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonID: A1
-  playerItemChanged: {fileID: 11400000, guid: b8079439d9b612340a2fc021cad8e148, type: 2}
+  buttonID: 
+  playerItemChanged: {fileID: 0}
+  player: {fileID: 4969653300142620043, guid: 72ddce6cccdaa184db886e3abb8b7d6c, type: 3}
 --- !u!1 &1233245446571173935
 GameObject:
   m_ObjectHideFlags: 0
