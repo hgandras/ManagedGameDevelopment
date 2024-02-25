@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3520712744030724235}
   - component: {fileID: -6052047168479148537}
   m_Layer: 0
-  m_Name: AttackItem2
+  m_Name: AttackItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161bd4fd3ae997849888932267731ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evolveData: {fileID: 11400000, guid: 69c48f4e366e4594e95e81a7b89c346c, type: 2}
-  _ID: A2
+  evolveData: {fileID: 11400000, guid: 2824dc23a68495d4fb213cea98c72356, type: 2}
+  _ID: A1
 --- !u!50 &-3520712744030724235
 Rigidbody2D:
   serializedVersion: 4

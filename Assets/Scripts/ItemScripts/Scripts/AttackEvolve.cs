@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: This structure will probably change, maybe scriptable object data will be enough to describe an item.
 public class AttackEvolve : MonoBehaviour, IEvolve
 {
     public AttackEvolveSO evolveData;
@@ -13,7 +14,6 @@ public class AttackEvolve : MonoBehaviour, IEvolve
 
     public bool isUnlocked { get; set; }
     public string ID { get { return _ID; } private  set { _ID = value; } }
-
     public string Name => throw new System.NotImplementedException();
 
     private void OnValidate()

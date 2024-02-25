@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/mainMenu.uss?fileID=7433441132597879392&amp;guid=ce56074c95040c64092533f8a3883be2&amp;type=3#mainMenu" />
+    <ui:VisualElement name="MenuBackground" class="menuBackground" style="height: 100%; width: 100%; flex-direction: column; -unity-background-scale-mode: stretch-to-fill; justify-content: center; align-self: center; align-items: center; display: flex;">
+        <ui:VisualElement name="MiddleLine" class="middleMenu middleMenu2">
+            <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Play-button" class="buttonStyle" />
+            <ui:Button text="Options" parse-escape-sequences="true" display-tooltip-when-elided="true" view-data-key="Options-button" focusable="false" name="Options-button" class="buttonStyle" />
+            <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" view-data-key="Play-button" name="Quit-button" class="buttonStyle" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

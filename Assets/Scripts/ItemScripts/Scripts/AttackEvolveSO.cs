@@ -10,4 +10,6 @@ public class AttackEvolveSO : ScriptableObject
     public bool melee;
     public float damage;
     public Sprite displaySprite;
+    //Temporary, just to differentiate items represented by the 2D primitives
+    public Color spriteColor;
 }
