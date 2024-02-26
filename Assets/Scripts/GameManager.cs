@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     public List<RandomEnemyInfo> procEnemyColors = new List<RandomEnemyInfo>();
 
 
-    //Evolves
+    //Evolves data
     [Header("Evolves")]
     public AttackEvolve attachedAttackEvolve;
     public DefenseEvolve attachedDefenseEvolve;
@@ -35,6 +36,80 @@ public class GameManager : MonoBehaviour
     public List<DefenseEvolve> defenseEvolves;
     public List<MovementEvolve> movementEvolves;
 
+    public List<AttackEvolve> lockedAttackEvolves 
+    {
+        get 
+        {
+            var lockedEvolves = attackEvolves.Where(x => !x.isUnlocked);
+            if(lockedEvolves!=null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+    public List<DefenseEvolve> lockedDefenseEvolves
+    {
+        get
+        {
+            var lockedEvolves = defenseEvolves.Where(x => !x.isUnlocked);
+            if (lockedEvolves != null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+
+    public List<MovementEvolve> lockedMovementEvolves
+    {
+        get
+        {
+            var lockedEvolves = movementEvolves.Where(x => !x.isUnlocked);
+            if (lockedEvolves != null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+    public List<AttackEvolve> unlockedAttackEvolves
+    {
+        get
+        {
+            var lockedEvolves = attackEvolves.Where(x => x.isUnlocked);
+            if (lockedEvolves != null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+    public List<DefenseEvolve> unlockedDefenseEvolves
+    {
+        get
+        {
+            var lockedEvolves = defenseEvolves.Where(x => x.isUnlocked);
+            if (lockedEvolves != null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+
+    public List<MovementEvolve> unlockedMovementEvolves
+    {
+        get
+        {
+            var lockedEvolves = movementEvolves.Where(x => x.isUnlocked);
+            if (lockedEvolves != null)
+                return lockedEvolves.ToList();
+            return null;
+        }
+    }
+
+    public int numUnlockedEvolves
+    {
+        get { return unlockedAttackEvolves.Count + unlockedDefenseEvolves.Count + unlockedMovementEvolves.Count; } 
+    }
+
+    public int numLockedEvolves
+    {
+        get { return lockedAttackEvolves.Count + lockedDefenseEvolves.Count + lockedMovementEvolves.Count; }
+    }
+
+    //Player events (might be changed)
     [Header("Events")]
     public GameEvent onXPChange;
     public GameEvent onHPChange;
