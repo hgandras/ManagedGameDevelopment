@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     public int numRandomEnemies;
     public List<RandomEnemyInfo> procEnemyColors = new List<RandomEnemyInfo>();
 
-
     //Evolves data
     [Header("Evolves")]
     public AttackEvolve attachedAttackEvolve;

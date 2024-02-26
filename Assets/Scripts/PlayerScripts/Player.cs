@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         moveAction = actions.Gameplay.Move;
         moveAction.Enable();
-        //Debug.Log("Start called");
+
         GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
         /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
         GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Debug.Log(rb);
-        //Debug.Log("Start called");
          GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
          /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
          GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
@@ -82,18 +81,30 @@ public class Player : MonoBehaviour
         rb.MoveRotation(angle);
     }
 
-
     private void updateMoveDir()
     {
         moveDir = moveAction.ReadValue<Vector2>();
     }
 
+
+    //TODO: Later update a these with the enemies stats as damage, and the plant's XP
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Enemy")
+        Debug.Log("On collision");
+        if (collision.gameObject.tag == "Enemy")
         {
             GameManager.DamagePlayer(5);
             Debug.Log(GameManager.instance.playerHP);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("On trigger");
+        if (collision.tag == "Plant")
+        {
+            GameManager.AddXP(5);
+            Debug.Log(GameManager.instance.lvlProgress);
         }
     }
 

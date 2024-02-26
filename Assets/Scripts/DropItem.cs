@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// When this game object enters the scene, it chooses a random item to be unlocked.
+/// When colliding, it adds the unlocked item, and destroys the object.
+/// </summary>
 public class DropItem : MonoBehaviour
 {
+    public IEvolve randomEvolve { get; private set; }
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
 
@@ -14,7 +20,6 @@ public class DropItem : MonoBehaviour
         float probDefense = GameManager.instance.lockedDefenseEvolves.Count / normFactor;
         float value  = Random.value;
         int randomIndex;
-        IEvolve randomEvolve;
         if (value <= probAttack)
         {
             randomIndex = Random.Range(0, GameManager.instance.lockedAttackEvolves.Count);
@@ -30,7 +35,15 @@ public class DropItem : MonoBehaviour
             randomIndex = Random.Range(0, GameManager.instance.lockedMovementEvolves.Count);
             randomEvolve = GameManager.instance.lockedMovementEvolves[randomIndex];
         }
-                
-
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            randomEvolve.isUnlocked = true;
+            Destroy(gameObject);
+        }
+    }
+
 }
