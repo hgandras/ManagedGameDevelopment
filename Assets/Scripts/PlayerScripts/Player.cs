@@ -90,22 +90,21 @@ public class Player : MonoBehaviour
     //TODO: Later update a these with the enemies stats as damage, and the plant's XP
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("On collision");
         if (collision.gameObject.tag == "Enemy")
         {
             GameManager.DamagePlayer(5);
             Debug.Log(GameManager.instance.playerHP);
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("On trigger");
-        if (collision.tag == "Plant")
+        if (collision.gameObject.tag == "Plant")
         {
             GameManager.AddXP(5);
             Debug.Log(GameManager.instance.lvlProgress);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 
     public void AddItemToPlayer(char evolveType, int evolveID)
