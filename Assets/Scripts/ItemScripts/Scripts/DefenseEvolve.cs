@@ -6,10 +6,17 @@ public class DefenseEvolve : MonoBehaviour, IEvolve
 {
     public DefenseEvolveSO evolveData;
     [SerializeField] string _ID;
+    [Tooltip("Item's in-game name")]
+    public string _Name;
     public string ID { get { return _ID; } private set { _ID = value; } }
-    public bool isUnlocked {get;set;}
+    public bool isUnlocked { get; set; }
+    public string Name { get { return _Name; } private set { _Name = value; } }
 
-    public string Name => throw new System.NotImplementedException();
+    private void OnValidate()
+    {
+        Name = _Name;
+        ID = _ID;
+    }
 
     private void Awake()
     {

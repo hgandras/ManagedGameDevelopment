@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evolveData: {fileID: 11400000, guid: 2824dc23a68495d4fb213cea98c72356, type: 2}
   _ID: A1
+  _Name: Attack1
 --- !u!50 &-3520712744030724235
 Rigidbody2D:
   serializedVersion: 4

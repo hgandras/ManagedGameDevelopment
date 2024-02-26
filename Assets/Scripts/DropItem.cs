@@ -39,6 +39,7 @@ public class DropItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(randomEvolve.Name);
         if(collision.tag == "Player")
         {
             randomEvolve.isUnlocked = true;

@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c989bfcccc6e49459e55afb4ac23571, type: 3}
-  m_Name: DefenseEvolve1
+  m_Script: {fileID: 11500000, guid: 00235f940af545d47bd15e69979ccebe, type: 3}
+  m_Name: MovementEvolve1
   m_EditorClassIdentifier: 
-  sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  dmgReduction: 0
-  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  movementSpeedBoost: 0

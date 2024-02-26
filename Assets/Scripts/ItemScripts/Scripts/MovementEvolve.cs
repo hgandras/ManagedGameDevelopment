@@ -6,10 +6,18 @@ public class MovementEvolve : MonoBehaviour, IEvolve
 {
     public MovementEvolveSO evolveData;
     [SerializeField] string _ID;
+    [SerializeField] string _Name;
     public string ID { get { return _ID; } private set { _ID = value; } }
     public bool isUnlocked { get; set; }
 
-    public string Name => throw new System.NotImplementedException();
+    public string Name { get { return _Name; } private set { _Name = value; } }
+
+
+    private void OnValidate()
+    {
+        Name = _Name;
+        ID = _ID;
+    }
 
     private void Awake()
     {

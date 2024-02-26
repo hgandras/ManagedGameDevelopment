@@ -7,6 +7,7 @@ public class AttackEvolve : MonoBehaviour, IEvolve
 {
     public AttackEvolveSO evolveData;
     [SerializeField] string _ID;
+    [SerializeField] string _Name;
     private float attackRange;
     private float attackSpeed;
     private float damage;
@@ -14,11 +15,12 @@ public class AttackEvolve : MonoBehaviour, IEvolve
 
     public bool isUnlocked { get; set; }
     public string ID { get { return _ID; } private  set { _ID = value; } }
-    public string Name => throw new System.NotImplementedException();
+    public string Name { get { return _Name; } private set { _Name = value; } }
 
     private void OnValidate()
     {
         ID = _ID;
+        Name = _Name;
     }
 
     private void Awake()

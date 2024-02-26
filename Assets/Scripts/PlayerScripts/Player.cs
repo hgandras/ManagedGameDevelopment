@@ -30,17 +30,7 @@ public class Player : MonoBehaviour
         moveAction = actions.Gameplay.Move;
         moveAction.Enable();
 
-        GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
-        /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
-        GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
-
-        SpriteRenderer aERenderer = attackEvolve.GetComponent<SpriteRenderer>();
-        /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
-        SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
-
-        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
-        aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
-        //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
+        UpdateSprites();
     }
 
     private void OnDisable()
@@ -48,23 +38,10 @@ public class Player : MonoBehaviour
         moveAction.Disable();
     }
 
-
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log(rb);
-         GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
-         /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
-         GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
-
-         SpriteRenderer aERenderer = attackEvolve.GetComponent<SpriteRenderer>();
-        /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
-        SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
-
-        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
-         aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
-         //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
+        UpdateSprites();
     }
 
     void FixedUpdate()
@@ -73,7 +50,6 @@ public class Player : MonoBehaviour
         updateMoveDir();
 
         moveDir.Normalize();
-        //Debug.Log(rb);
         rb.AddForce(moveDir * 2);
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
 
@@ -102,11 +78,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
-
     public void AddItemToPlayer(char evolveType, int evolveID)
     {
         switch(evolveType)
@@ -124,12 +95,21 @@ public class Player : MonoBehaviour
                 Debug.LogWarning("Wrong button ID format");
                 return;
         }
+    }
 
-        Debug.Log("Player attack evolve:" + attackEvolve);
-        Debug.Log("Player defense evolve:" + defenseEvolve);
-        Debug.Log("Player movement evolve:" + movementEvolve);
+    private void UpdateSprites()
+    {
+        GameObject attackEvolve = transform.Find("AttackEvolve").gameObject;
+        /*GameObject defenseEvolve = transform.Find("DefenseEvolve").gameObject;
+        GameObject movementEvolve = transform.Find("MovementEvolve").gameObject;*/
 
-        //Here attach the evolve to the player visually, and update the player's stats.
+        SpriteRenderer aERenderer = attackEvolve.GetComponent<SpriteRenderer>();
+        /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
+        SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
+
+        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
+        aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
+        //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
     }
 }
 

@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evolveData: {fileID: 11400000, guid: 69c48f4e366e4594e95e81a7b89c346c, type: 2}
   _ID: A2
+  _Name: Atta
 --- !u!50 &-3520712744030724235
 Rigidbody2D:
   serializedVersion: 4

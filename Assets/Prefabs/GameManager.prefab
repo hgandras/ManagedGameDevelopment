@@ -51,11 +51,10 @@ MonoBehaviour:
   lvlMaxXP: 50
   numRandomEnemies: 0
   attachedAttackEvolve: {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
-  attachedDefenseEvolve: {fileID: 0}
-  attachedMovementEvolve: {fileID: 0}
+  attachedDefenseEvolve: {fileID: 6256554212465051720, guid: 73130ff2caf930441a4d787d751e79af, type: 3}
+  attachedMovementEvolve: {fileID: 3990784428675946841, guid: 61ab00ebdd95fd0449185244b6785f69, type: 3}
   attackEvolves:
   - {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
-  - {fileID: 2631627738387899640, guid: 9da974a19819e584cb29707d370cc1cd, type: 3}
   defenseEvolves: []
   movementEvolves: []
   onXPChange: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
