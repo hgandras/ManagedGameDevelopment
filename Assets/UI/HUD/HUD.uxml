@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/HUDStyle.uss?fileID=7433441132597879392&amp;guid=42b64ca3fd975df46a6751f88761c08f&amp;type=3#HUDStyle" />
+    <ui:VisualElement name="RootElement" style="flex-grow: 1;">
+        <ui:ProgressBar value="20" title="XP: 0/50" name="XPbar" low-value="0" focusable="false" class="unity-progress-bar" />
+    </ui:VisualElement>
+</ui:UXML>
