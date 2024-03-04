@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00235f940af545d47bd15e69979ccebe, type: 3}
   m_Name: MovementEvolve1
   m_EditorClassIdentifier: 
-  sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  sprite: {fileID: 0}
   movementSpeedBoost: 0
+  _ID: M1
+  _Name: Movement1

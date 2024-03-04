@@ -321,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToSpawn:
   - {fileID: 830537039458401126, guid: 55b8783c65a878f4fbca3a89a16b91fd, type: 3}
-  spawnInterval: 2
+  spawnInterval: 10000
   canSpawn: 1
 --- !u!1001 &511731727
 PrefabInstance:
@@ -1544,10 +1544,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6897684214992145043, guid: ceef11a961a87ce438240ccbc39e178e, type: 3}
-      propertyPath: objectsToKeep
-      value: 
-      objectReference: {fileID: 611373757}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

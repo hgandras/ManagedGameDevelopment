@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869c0af185482e34fbde0cfa720bbe62, type: 3}
-  m_Name: AttackEvolve1
+  m_Script: {fileID: 11500000, guid: 3c989bfcccc6e49459e55afb4ac23571, type: 3}
+  m_Name: DefenseEvolve2
   m_EditorClassIdentifier: 
-  attackRange: 100
-  attackSpeed: 0
-  melee: 1
-  damage: 10
-  displaySprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  dmgReduction: 0
   spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  _ID: D2
+  _Name: Defense2

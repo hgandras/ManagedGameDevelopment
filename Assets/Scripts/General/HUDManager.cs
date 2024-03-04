@@ -11,7 +11,7 @@ public class HUDManager : MonoBehaviour
 {
     public void UpdateXPBar()
     {
-        Debug.Log(GameManager.instance.lvlProgress);
+        //Debug.Log(GameManager.instance.lvlProgress);
        /* Transform progressBarTransform=transform.Find("LevelBar").Find("ProgressBarFill");
         Image progressBar = progressBarTransform.GetComponent<Image>();
         progressBar.fillAmount = (float)GameManager.instance.lvlProgress/GameManager.instance.lvlMaxXP;
@@ -21,7 +21,7 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateHPBar()
     {
-        Debug.Log(GameManager.instance.playerHP);
+        //Debug.Log(GameManager.instance.playerHP);
     }
 
     

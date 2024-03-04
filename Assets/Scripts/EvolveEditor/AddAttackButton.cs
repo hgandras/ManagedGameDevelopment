@@ -22,7 +22,7 @@ public class AddAttackButton : MonoBehaviour
     {
         GameObject evolveComponent = player.transform.Find(attackEvolveName).gameObject;
         SpriteRenderer spriteRenderer = evolveComponent.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = evolve.evolveData.displaySprite;
+        spriteRenderer.sprite = evolve.displaySprite;
         //Debug.Log(GameManager.instance);
         GameManager.instance.attachedAttackEvolve = evolve;
     }

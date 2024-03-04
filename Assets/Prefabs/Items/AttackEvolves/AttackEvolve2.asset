@@ -16,4 +16,7 @@ MonoBehaviour:
   attackSpeed: 0
   melee: 1
   damage: 10
-  displaySprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  displaySprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  spriteColor: {r: 0, g: 0, b: 0, a: 0}
+  _ID: A2
+  _Name: Attack2

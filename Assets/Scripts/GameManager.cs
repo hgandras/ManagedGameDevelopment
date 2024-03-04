@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,12 +6,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+
+//TODO: For refactoring later
+/// <summary>
+/// -Redo the item system, so that there is an Item class, inheriting from a base class, and in its constructor it 
+/// accepts a scriptable object containing its data. This way, the data can just simply be read from the item, and other 
+/// methods can be attached to it. Also IEvolve might won't be needed. There is probably a better way to handle unlocked items.
+/// 
+/// -Change IMGui for UIToolkit!!!!
+/// </summary>
+
 public class GameManager : MonoBehaviour
 {
     //Instance
     public static GameManager instance { get; private set; }
-
-    
 
     //Player stats
     [Header("General player stats")]
@@ -31,81 +40,22 @@ public class GameManager : MonoBehaviour
     public DefenseEvolve attachedDefenseEvolve;
     public MovementEvolve attachedMovementEvolve;
 
-    public List<AttackEvolve> attackEvolves;
-    public List<DefenseEvolve> defenseEvolves;
-    public List<MovementEvolve> movementEvolves;
+    public List<AttackEvolve> lockedAttackEvolves;
+    public List<DefenseEvolve> lockedDefenseEvolves;
+    public List<MovementEvolve> lockedMovementEvolves;
 
-    public List<AttackEvolve> lockedAttackEvolves 
-    {
-        get 
-        {
-            var lockedEvolves = attackEvolves.Where(x => !x.isUnlocked);
-            if(lockedEvolves!=null)
-                return lockedEvolves.ToList();
-            return null;
-        }
-    }
-    public List<DefenseEvolve> lockedDefenseEvolves
-    {
-        get
-        {
-            var lockedEvolves = defenseEvolves.Where(x => !x.isUnlocked);
-            if (lockedEvolves != null)
-                return lockedEvolves.ToList();
-            return null;
-        }
-    }
+    public List<AttackEvolve> unlockedAttackEvolves;
+    public List<DefenseEvolve> unlockedDefenseEvolves;
+    public List<MovementEvolve> unlockedMovementEvolves;
 
-    public List<MovementEvolve> lockedMovementEvolves
+    public int numLockedEvolves
     {
-        get
-        {
-            var lockedEvolves = movementEvolves.Where(x => !x.isUnlocked);
-            if (lockedEvolves != null)
-                return lockedEvolves.ToList();
-            return null;
-        }
-    }
-    public List<AttackEvolve> unlockedAttackEvolves
-    {
-        get
-        {
-            var lockedEvolves = attackEvolves.Where(x => x.isUnlocked);
-            if (lockedEvolves != null)
-                return lockedEvolves.ToList();
-            return null;
-        }
-    }
-    public List<DefenseEvolve> unlockedDefenseEvolves
-    {
-        get
-        {
-            var lockedEvolves = defenseEvolves.Where(x => x.isUnlocked);
-            if (lockedEvolves != null)
-                return lockedEvolves.ToList();
-            return null;
-        }
-    }
-
-    public List<MovementEvolve> unlockedMovementEvolves
-    {
-        get
-        {
-            var lockedEvolves = movementEvolves.Where(x => x.isUnlocked);
-            if (lockedEvolves != null)
-                return lockedEvolves.ToList();
-            return null;
-        }
+        get { return lockedAttackEvolves.Count + lockedDefenseEvolves.Count + lockedMovementEvolves.Count; } 
     }
 
     public int numUnlockedEvolves
     {
-        get { return unlockedAttackEvolves.Count + unlockedDefenseEvolves.Count + unlockedMovementEvolves.Count; } 
-    }
-
-    public int numLockedEvolves
-    {
-        get { return lockedAttackEvolves.Count + lockedDefenseEvolves.Count + lockedMovementEvolves.Count; }
+        get { return unlockedAttackEvolves.Count + unlockedDefenseEvolves.Count + unlockedMovementEvolves.Count; }
     }
 
     //Player events (might be changed)
@@ -130,6 +80,7 @@ public class GameManager : MonoBehaviour
     private Controls actions;
     private InputAction backAction;
 
+    //Unity messages
     private void OnEnable()
     {
         backAction.Enable();
@@ -140,11 +91,8 @@ public class GameManager : MonoBehaviour
         backAction.Disable();
     }
 
-   
-
     public void Awake()
     {
-        Debug.Log("Awake called");
         actions = new Controls();
         backAction = actions.Gameplay.Back;
         backAction.performed += ChangeToEditor;
@@ -160,15 +108,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {  
-        instance.lvl = 0;
-        instance.lvlProgress = 0;
-        instance.lvlMaxXP = 50;
-        instance.playerMaxHP = 100;
-        instance.numRandomEnemies = 3;
         GenerateRandomColors();
-        Debug.Log("Start run");
     }
 
+    //Public methods, used for manipulating the gamestate
     public static void AddXP(int XP)
     {
         instance.lvlProgress += XP;
@@ -211,15 +154,48 @@ public class GameManager : MonoBehaviour
             spawnedPlants.Remove(plant);
     }
 
+    //This is ugly::((
+    public void UnlockItem(IEvolve evolve)
+    {
+       
+        Type type = evolve.GetType();
+        if(type.IsAssignableFrom(typeof(AttackEvolve)))
+        {
+            AttackEvolve atEvolve = evolve as AttackEvolve;
+            if (atEvolve != null && lockedAttackEvolves.Contains(atEvolve))
+            {
+                lockedAttackEvolves.Remove(atEvolve);
+                unlockedAttackEvolves.Add(atEvolve);
+            }
+        }
+        else if (type.IsAssignableFrom(typeof(DefenseEvolve)))
+        {
+            DefenseEvolve atEvolve = evolve as DefenseEvolve;
+            if (atEvolve != null && lockedDefenseEvolves.Contains(atEvolve))
+            {
+                lockedDefenseEvolves.Remove(atEvolve);
+                unlockedDefenseEvolves.Add(atEvolve);
+            }
+        }
+        else if (type.IsAssignableFrom(typeof(MovementEvolve)))
+        {
+            MovementEvolve atEvolve = evolve as MovementEvolve;
+            if (atEvolve != null && lockedMovementEvolves.Contains(atEvolve))
+            {
+                lockedMovementEvolves.Remove(atEvolve);
+                unlockedMovementEvolves.Add(atEvolve);
+            }
+        }
+    }
+
+    //Private methods
     private void GenerateRandomColors()
     {
         for(int i=0; i<numRandomEnemies;i++)
         {
             instance.procEnemyColors.Add(new RandomEnemyInfo());
-            Debug.Log(procEnemyColors[i].headColor);
         }
     }
-
 
     private void ChangeToEditor(InputAction.CallbackContext callbackContext)
     {
@@ -235,4 +211,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Editor");
         }
     }
+
 }

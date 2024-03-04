@@ -49,14 +49,22 @@ MonoBehaviour:
   lvl: 0
   lvlProgress: 50
   lvlMaxXP: 50
-  numRandomEnemies: 0
-  attachedAttackEvolve: {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
-  attachedDefenseEvolve: {fileID: 6256554212465051720, guid: 73130ff2caf930441a4d787d751e79af, type: 3}
-  attachedMovementEvolve: {fileID: 3990784428675946841, guid: 61ab00ebdd95fd0449185244b6785f69, type: 3}
-  attackEvolves:
-  - {fileID: 2631627738387899640, guid: de1cfe0b6b8a462478a5c570d18b7323, type: 3}
-  defenseEvolves: []
-  movementEvolves: []
+  numRandomEnemies: 3
+  attachedAttackEvolve: {fileID: 11400000, guid: 2824dc23a68495d4fb213cea98c72356, type: 2}
+  attachedDefenseEvolve: {fileID: 11400000, guid: d3f1669823b234044b410cb06a36cf18, type: 2}
+  attachedMovementEvolve: {fileID: 11400000, guid: 7a0cba9fcb7f87242820a8514844dd48, type: 2}
+  lockedAttackEvolves:
+  - {fileID: 11400000, guid: 69c48f4e366e4594e95e81a7b89c346c, type: 2}
+  lockedDefenseEvolves:
+  - {fileID: 11400000, guid: 72e82b9f5079ecd498c86513d06cb60e, type: 2}
+  lockedMovementEvolves:
+  - {fileID: 11400000, guid: c89a7755585f65348b6419cf108bdb25, type: 2}
+  unlockedAttackEvolves:
+  - {fileID: 11400000, guid: 2824dc23a68495d4fb213cea98c72356, type: 2}
+  unlockedDefenseEvolves:
+  - {fileID: 11400000, guid: d3f1669823b234044b410cb06a36cf18, type: 2}
+  unlockedMovementEvolves:
+  - {fileID: 11400000, guid: 7a0cba9fcb7f87242820a8514844dd48, type: 2}
   onXPChange: {fileID: 11400000, guid: 9f7ef5b3b14925b49b125dcaec1db73e, type: 2}
   onHPChange: {fileID: 11400000, guid: 1876a0327bbbfc8448de1addb54965ee, type: 2}
   objectsToKeep: {fileID: 0}

@@ -29,8 +29,6 @@ public class Player : MonoBehaviour
     {
         moveAction = actions.Gameplay.Move;
         moveAction.Enable();
-
-        UpdateSprites();
     }
 
     private void OnDisable()
@@ -45,7 +43,8 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate()
-    {        
+    {
+
         //Update move direction, and normalize
         updateMoveDir();
 
@@ -69,31 +68,12 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             GameManager.DamagePlayer(5);
-            Debug.Log(GameManager.instance.playerHP);
+            //Debug.Log(GameManager.instance.playerHP);
         }
         if (collision.gameObject.tag == "Plant")
         {
             GameManager.AddXP(5);
-            Debug.Log(GameManager.instance.lvlProgress);
-        }
-    }
-
-    public void AddItemToPlayer(char evolveType, int evolveID)
-    {
-        switch(evolveType)
-        {
-            case 'A':
-                attackEvolve = GameManager.instance.attackEvolves[evolveID];
-                break;
-            case 'D':
-                defenseEvolve = GameManager.instance.defenseEvolves[evolveID];
-                break;
-            case 'M':
-                movementEvolve = GameManager.instance.movementEvolves[evolveID];
-                break;
-            default:
-                Debug.LogWarning("Wrong button ID format");
-                return;
+            //Debug.Log(GameManager.instance.lvlProgress);
         }
     }
 
@@ -107,8 +87,8 @@ public class Player : MonoBehaviour
         /*SpriteRenderer dERenderer = defenseEvolve.GetComponent<SpriteRenderer>();
         SpriteRenderer mERenderer = movementEvolve.GetComponent<SpriteRenderer>();*/
 
-        Debug.Log(GameManager.instance.attachedAttackEvolve.evolveData.displaySprite);
-        aERenderer.sprite = GameManager.instance.attachedAttackEvolve.evolveData.displaySprite;
+        Debug.Log(GameManager.instance.attachedAttackEvolve);
+        aERenderer.sprite = GameManager.instance.attachedAttackEvolve.displaySprite;
         //dERenderer.sprite = GameManager.instance.attachedDefenseEvolve.evolveData.*/
     }
 }
