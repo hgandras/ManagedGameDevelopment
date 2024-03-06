@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Attackevolves menu" src="project://database/Assets/UI/Editor/Attackevolves%20menu.uxml?fileID=9197481963319205126&amp;guid=5fd6b7a2b5153124798a1acc43713f2f&amp;type=3#Attackevolves menu" />
+    <ui:Template name="MainEditorMenu" src="project://database/Assets/UI/Editor/MainEditorMenu.uxml?fileID=9197481963319205126&amp;guid=8d56d0ab0f30e0543baa5c452f8da57f&amp;type=3#MainEditorMenu" />
+    <ui:Template name="Defenseevolve menu" src="project://database/Assets/UI/Editor/Defenseevolve%20menu.uxml?fileID=9197481963319205126&amp;guid=18f9ba20d888ca04e8c235af4198ef6a&amp;type=3#Defenseevolve menu" />
+    <ui:Template name="Movementevolve menu" src="project://database/Assets/UI/Editor/Movementevolve%20menu.uxml?fileID=9197481963319205126&amp;guid=c35e9bc8c768981459841277a8bed403&amp;type=3#Movementevolve menu" />
+    <Style src="project://database/Assets/UI/Editor/editorMenu.uss?fileID=7433441132597879392&amp;guid=491ba566e68103c4588c3964bdc291cc&amp;type=3#editorMenu" />
+    <ui:Instance template="MainEditorMenu" name="MainEditorMenu" class="Container" />
+    <ui:Instance template="Attackevolves menu" name="Attackevolves menu" class="Container" style="overflow: visible; display: none;" />
+    <ui:Instance template="Defenseevolve menu" name="Defenseevolve menu" class="Container" style="display: none;" />
+    <ui:Instance template="Movementevolve menu" name="Movementevolve menu" class="Container" style="display: none;" />
+</ui:UXML>
